@@ -20,3 +20,4 @@ const getData = async (url, options) => {
 };
 console.log(artists);
 getData(urlArtist, optionsDeezer);
+
