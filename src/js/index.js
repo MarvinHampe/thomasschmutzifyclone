@@ -40,7 +40,6 @@ const getData = async (endpoint) => {
 // DOM connection
 
 let startPlaylist = document.getElementById('playlistsStart');
-startPlaylist.style.display = 'flex';
 let startArtist = document.getElementById('artistStart');
 
 
