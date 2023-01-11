@@ -25,9 +25,6 @@ const urlPlaylist = `https://deezerdevs-deezer.p.rapidapi.com/playlist/807458146
 // 	console.log(list.number)
 // });
 
-const urlArtist = `https://deezerdevs-deezer.p.rapidapi.com/artist/${artists.käptnPeng.number}`
-const urlPlaylist = `https://deezerdevs-deezer.p.rapidapi.com/playlist/${playlists.popRock.number}`
-
 
 //FETCH FUNKTION
 const getData = async (url, options) => {
