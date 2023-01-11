@@ -1,9 +1,9 @@
-export let artists = {
-    käptnPeng: {
+export let artists = [
+    {
         artist: "Käptn Peng",
         number: 7116573
     }
-};
+];
 
 // PLAYLISTS
 
