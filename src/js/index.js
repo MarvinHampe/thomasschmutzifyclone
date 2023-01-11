@@ -1,6 +1,11 @@
 // import * as bootstrap from '../../node_modules/bootstrap/js';
-import {artists} from "./numbers.js"
-import { api } from "./env.js";
+import {
+	artists,
+	playlists
+} from "./numbers.js"
+import {
+	api
+} from "./env.js";
 
 // OPTIONS for APIs
 const optionsDeezer = {
@@ -11,13 +16,22 @@ const optionsDeezer = {
 	}
 };
 
+
 //URLs für DEEZER API
 const urlArtist = `https://deezerdevs-deezer.p.rapidapi.com/artist/${artists.käptnPeng.number}`
 const urlPlaylist = `https://deezerdevs-deezer.p.rapidapi.com/playlist/8074581462`
 
+// Object.values(playlists).forEach(list => {
+// 	console.log(list.number)
+// });
+
+const urlArtist = `https://deezerdevs-deezer.p.rapidapi.com/artist/${artists.käptnPeng.number}`
+const urlPlaylist = `https://deezerdevs-deezer.p.rapidapi.com/playlist/${playlists.popRock.number}`
+
 
 //FETCH FUNKTION
 const getData = async (url, options) => {
+
     let response = await fetch(url,options);
     console.log(response);
     let data = await response.json();
@@ -46,8 +60,3 @@ window.onload = () => {
 	  <p>Rema & Selena Gomez are on top of the...</p>
 	</div>`;
 };
-
-
-
-
-
