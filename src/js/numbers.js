@@ -1,6 +1,8 @@
-export let artists = [{
+export let artists = [
+    {
         name: "Käptn Peng",
         number: 7116573
+
     },
 
     {

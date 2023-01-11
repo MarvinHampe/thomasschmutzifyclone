@@ -41,6 +41,8 @@ const getData = async (endpoint) => {
 
 let startPlaylist = document.getElementById('playlistsStart');
 startPlaylist.style.display = 'flex';
+let startArtist = document.getElementById('artistStart');
+
 
 
 //ONLOAD
@@ -59,8 +61,23 @@ window.onload = () => {
 			<span class="fa fa-play"></span>
 		  </div>
 		  <h4>${data.title}</h4>
-		  <p>Rema & Selena Gomez are on top of the...</p>
+		  <p>${data.description}</p>
 		</div>`;
 	})
 	
+	artists.map(async (artist) =>{
+		const data = await getData(`artist/${artist.number}`);
+		console.log(data);
+
+		startArtist.innerHTML += `
+		<div class="list">
+		<div class="item">
+		  <img src="${data.picture_big}" />
+		  <div class="play">
+			<span class="fa fa-play"></span>
+		  </div>
+		  <h4>${data.name}</h4>
+		  <p>${data.type}</p>
+		</div>`;
+	})
 };
