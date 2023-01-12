@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -85,14 +87,13 @@ input[type="submit"]:hover {
 /* horizontal line */
 
 .hl {
-  transform: translate(50%);
   padding-top: 0.7rem;
   justify-content: center;
   width: 175px;
   text-align: center;
   border-bottom: 2px solid #ddd;
   line-height: 0.1em;
-  margin: 10px 0 20px;
+  margin: 10px auto 20px auto;
 
   /* position: absolute;
   left: 50%;
