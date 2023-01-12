@@ -253,7 +253,7 @@ body {
   top: 25%;
   left: 10%;
   transform: translate(0%, 50%);
-  background: #1DB954;
+  background: #1db954;
   height: 10px;
   border-radius: 50px;
   padding: 7px;
@@ -281,7 +281,7 @@ body {
   width: 10px;
   height: 10px;
   border-radius: 50px;
-  background: #1DB954;
+  background: #1db954;
   display: flex;
   justify-content: center;
   align-items: center;
