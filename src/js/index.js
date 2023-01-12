@@ -66,6 +66,8 @@ window.onload = () => {
 		  <p>${data.description}</p>
 		</div>`;
 
+		//Only the first item works
+
 		document.querySelector('.fa-play').addEventListener('click', () => {
 			console.log("hi");
 
@@ -133,7 +135,7 @@ window.onload = () => {
 							// `
 							 return data.title;
 						 })}
-						
+
 						</div>
 					
 					
