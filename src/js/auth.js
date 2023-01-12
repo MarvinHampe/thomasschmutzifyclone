@@ -39,9 +39,8 @@ button.addEventListener('click', () => {
 
         if (emailInput.value === email.email && passInput.value === email.password) {
             window.location.href = 'index.html';
-            console.log('Here comes next page redirection')
         } else if (emailInput.value === "" || passInput.value === "") {
-            console.log('Error message')
+            document.getElementById('error-message').innerText = "Please enter a valid email and password";
         }
     })
 })

@@ -87,6 +87,15 @@ input:hover,
   background-color: #000000;
 }
 
+/* error message */
+
+#error-message {
+  text-align: center;
+  color: red;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
 /* ----- */
 .col {
   width: 50%;
