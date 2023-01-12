@@ -112,6 +112,7 @@ window.onload = () => {
 						 ${data.tracks.data.map(data => {
 
 							// FIND A WAY TO EDIT THE HTML WITH THE TRACK INFO
+							
 							// document.querySelector('.track-container').innerHTML= `
 							
 							// <div class="track">
