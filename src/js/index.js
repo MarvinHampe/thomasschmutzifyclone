@@ -69,6 +69,8 @@ window.onload = () => {
 		document.querySelector('.fa-play').addEventListener('click', () => {
 			console.log("hi");
 
+
+
 			mainContainer.innerHTML = `
 			<div class="container">
 				<div class="header">
@@ -81,6 +83,7 @@ window.onload = () => {
 						<h1>${data.title}</h1>
 						<div class="small_details">
 							<h2 class="creator">${data.creator.name}</h2>
+							<p class="playlist_description">${data.description}</p>
 						</div>
 						<ul class="data">
 							<li>${data.type}</li>
@@ -97,12 +100,38 @@ window.onload = () => {
 
 					<div class="track-list">
 						<div class="first-line">
-							<span class="span-left">TITLE</span>
+							<span class="span-title">TITLE</span>
+							<span class="span-artist">ARTIST</span>
+							<span class="span-album">ALBUM</span>
+							<span class="span-date">DATE</span>
+							<span class="span-duration">DURATION ICON</span>
 						</div>
 					
 						<div class="track-container">
 						
-						
+						 ${data.tracks.data.map(data => {
+
+							// FIND A WAY TO EDIT THE HTML WITH THE TRACK INFO
+							// document.querySelector('.track-container').innerHTML= `
+							
+							// <div class="track">
+							// 	<div class="track-image">
+							// 		<img src="${data.album.cover_big}" />
+							// 	</div>
+							// 	<div class="track-title">
+							// 		<span>${data.title}"<span>
+							// 	</div>
+							// 	<div class="track-artist">
+							// 		<span>${data.artist.name}"<span>
+							// 	</div>
+							// 	<div class="track-album">
+							// 		<span>${data.album.title}"<span>
+							// 	</div>
+							// </div>
+							
+							// `
+							 return data.title;
+						 })}
 						
 						</div>
 					
