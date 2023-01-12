@@ -29,14 +29,16 @@ let emails = [{
 
 // Select inputs and buttons, add event listener that validates the input value and redirects to next page
 
-const emailInput = document.getElementById('username');
-const passInput = document.getElementById('pass');
-const button = document.querySelector('button')
+const button = document.getElementById('submit-btn');
 
 button.addEventListener('click', () => {
     emails.forEach(email => {
         // Add a way to take email/password pair and not all array
+        const emailInput = document.getElementById('username');
+        const passInput = document.getElementById('pass');
+
         if (emailInput.value === email.email && passInput.value === email.password) {
+            window.location.href = 'index.html';
             console.log('Here comes next page redirection')
         } else if (emailInput.value === "" || passInput.value === "") {
             console.log('Error message')
