@@ -1,5 +1,4 @@
-export let artists = [
-    {
+export let artists = [{
         name: "Käptn Peng",
         number: 7116573
 
@@ -107,5 +106,54 @@ export let playlists = [{
     {
         name: "90's Rap",
         number: 1724212365
+    },
+]
+
+
+// Albums
+
+export let podcasts = [{
+        name: "Tatort Deutschland",
+        number: 3159212
+    },
+
+    {
+        name: "J.R.R. Tolkien: Der Herr der Ringe - Fantasy-Hörspiel-Klassiker",
+        number: 5559457
+    },
+
+    {
+        name: "Wissen Impossible",
+        number: 5603617
+    },
+
+    {
+        name: "Drugs",
+        number: 58049
+    },
+
+    {
+        name: "TED Talks Daily",
+        number: 59898
+    },
+
+    {
+        name: "MORD AUF EX",
+        number: 660582
+    },
+
+    {
+        name: "Dick & Doof",
+        number: 409772
+    },
+
+    {
+        name: "Das Böse",
+        number: 53807
+    },
+
+    {
+        name: "5 Minuten Harry Podcast von Coldmirror",
+        number: 1653352
     },
 ]
