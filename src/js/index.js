@@ -43,6 +43,7 @@ const getData = async (endpoint) => {
 let startPlaylist = document.getElementById('playlistsStart');
 let startArtist = document.getElementById('artistStart');
 let startPodcast = document.getElementById('podcastStart');
+let mainContainer = document.getElementById('main-container');
 
 
 
@@ -64,6 +65,58 @@ window.onload = () => {
 		  <h4>${data.title}</h4>
 		  <p>${data.description}</p>
 		</div>`;
+
+		document.querySelector('.fa-play').addEventListener('click', () => {
+			console.log("hi");
+
+			mainContainer.innerHTML = `
+			<div class="container">
+				<div class="header">
+
+					<div class="image_container">
+						<img src="${data.picture_big}" />
+					</div>
+
+					<div class="data_container">
+						<h1>${data.title}</h1>
+						<div class="small_details">
+							<h2 class="creator">${data.creator.name}</h2>
+						</div>
+						<ul class="data">
+							<li>${data.type}</li>
+							<li>Duration: ${data.duration}</li>
+							<li>Fans: ${data.fans}</li>
+							<li>Number of songs: ${data.nb_tracks}</li>
+						</ul>
+						<div class="small_details">
+							<button>Listen</button>
+							<i>Heart Icon: ${data.is_loved_track}</i>
+							<i>Share icon</i>
+						</div>
+					</div>
+
+					<div class="track-list">
+						<div class="first-line">
+							<span class="span-left">TITLE</span>
+						</div>
+					
+						<div class="track-container">
+						
+						
+						
+						</div>
+					
+					
+					
+					
+					
+					</div>
+
+				</div>
+			</div>
+			`
+		})
+
 	})
 
 	artists.map(async (artist) => {
