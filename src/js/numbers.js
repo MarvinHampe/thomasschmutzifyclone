@@ -112,48 +112,48 @@ export let playlists = [{
 
 // Albums
 
-export let podcasts = [{
-        name: "Tatort Deutschland",
-        number: 3159212
+export let albums = [{
+        name: "Starboy",
+        number: 14652356
     },
 
     {
-        name: "J.R.R. Tolkien: Der Herr der Ringe - Fantasy-Hörspiel-Klassiker",
-        number: 5559457
+        name: "Origins",
+        number: 77649302
     },
 
     {
-        name: "Wissen Impossible",
-        number: 5603617
+        name: "SOS",
+        number: 383703577
     },
 
     {
-        name: "Drugs",
-        number: 58049
+        name: "Avatar: The Way of Water (Original Motion Picture Soundtrack)",
+        number: 386521497
     },
 
     {
-        name: "TED Talks Daily",
-        number: 59898
+        name: "Un Verano Sin Ti",
+        number: 316164367
     },
 
     {
-        name: "MORD AUF EX",
-        number: 660582
+        name: "Hot Pink",
+        number: 117680872
     },
 
     {
-        name: "Dick & Doof",
-        number: 409772
+        name: "Black Ice",
+        number: 9410110
     },
 
     {
-        name: "Das Böse",
-        number: 53807
+        name: "Nevermind (Super Deluxe Edition)",
+        number: 1252980
     },
 
     {
-        name: "5 Minuten Harry Podcast von Coldmirror",
-        number: 1653352
+        name: "Hybrid Theory",
+        number: 536294
     },
 ]

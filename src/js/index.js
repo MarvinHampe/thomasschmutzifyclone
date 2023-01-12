@@ -1,7 +1,8 @@
 // import * as bootstrap from '../../node_modules/bootstrap/js';
 import {
 	artists,
-	playlists
+	playlists,
+	albums
 } from "./numbers.js"
 import {
 	api
@@ -29,10 +30,10 @@ const url = `https://deezerdevs-deezer.p.rapidapi.com/`
 //FETCH FUNKTION
 const getData = async (endpoint) => {
 
-    let response = await fetch(url+endpoint,options);
-    console.log(response);
-    let data = await response.json();
-    console.log(data);
+	let response = await fetch(url + endpoint, options);
+	console.log(response);
+	let data = await response.json();
+	console.log(data);
 	return data;
 };
 
@@ -41,6 +42,7 @@ const getData = async (endpoint) => {
 
 let startPlaylist = document.getElementById('playlistsStart');
 let startArtist = document.getElementById('artistStart');
+let startPodcast = document.getElementById('podcastStart');
 
 
 
@@ -48,7 +50,7 @@ let startArtist = document.getElementById('artistStart');
 
 window.onload = () => {
 
-	playlists.map(async (playlist) =>{
+	playlists.map(async (playlist) => {
 		const data = await getData(`playlist/${playlist.number}`);
 		console.log(data);
 
@@ -63,8 +65,8 @@ window.onload = () => {
 		  <p>${data.description}</p>
 		</div>`;
 	})
-	
-	artists.map(async (artist) =>{
+
+	artists.map(async (artist) => {
 		const data = await getData(`artist/${artist.number}`);
 		console.log(data);
 
@@ -79,4 +81,21 @@ window.onload = () => {
 		  <p>${data.type}</p>
 		</div>`;
 	})
+
+	albums.map(async (album) => {
+		const data = await getData(`album/${album.number}`);
+		console.log(data);
+
+		startPodcast.innerHTML += `
+		<div class="list">
+		<div class="item">
+		  <img src="${data.cover_big}" />
+		  <div class="play">
+			<span class="fa fa-play"></span>
+		  </div>
+		  <h4>${data.title}</h4>
+		  <p>${data.artist.name}</p>
+		</div>`;
+	})
+
 };
