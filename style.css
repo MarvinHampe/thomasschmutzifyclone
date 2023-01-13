@@ -161,6 +161,8 @@ body {
   display: flex;
   gap: 20px;
   overflow: hidden;
+  gap:10px;
+  
 }
 .spotify-playlists .list .item {
   min-width: 100px;
