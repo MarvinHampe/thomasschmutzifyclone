@@ -150,13 +150,14 @@ body {
 }
 .spotify-playlists {
   padding: 20px 20px;
-display: flex;
+  display: flex;
 }
 
-h2 {color: #ffffff;
+h2 {
+  color: #ffffff;
   font-size: 16px;
-margin-left: 10px;
-margin-top: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .spotify-playlists .list {
@@ -272,7 +273,6 @@ margin-top: 20px;
   font-size: 10px;
   transition: 0.3s;
   line-height: 10px;
-  
 }
 .search-input::placeholder {
   color: #ffffff;
@@ -307,67 +307,72 @@ margin-top: 20px;
 }
 
 .fa-search {
-  font-size: 10px;background-color: #1db954;
+  font-size: 10px;
+  background-color: #1db954;
 }
 
 /*Audio Player*/
-  /* Position the audio player at the bottom of the page */
-    #audio-player {
-      position: fixed;
-      bottom: 0;
-      width: 80%;
-      background-color: #282828;
-      padding: 5px;
-      padding-left: 10px;
-      color: white;
-      font-family: 'Open Sans', sans-serif;
-      margin-left: 140px;
-    }
+/* Position the audio player at the bottom of the page */
+#audio-player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #282828;
+  padding: 5px;
+  padding-left: 10px;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-left: 140px;
+}
 
-    /* Style the album cover */
-    #album-cover {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      margin-right: 15px;
-    }
+/* Style the album cover */
+#album-cover {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
 
-    /* Style the audio controls */
-    #previous-button, #play-button, #next-button {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      outline: none;
-    }
+/* Style the audio controls */
+#previous-button,
+#play-button,
+#next-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
 
-    /* Style the audio controls icons */
-    #previous-button i, #play-button i, #next-button i {
-      font-size: 17px;
-      color: #1DB954;
-    }
+/* Style the audio controls icons */
+#previous-button i,
+#play-button i,
+#next-button i {
+  font-size: 17px;
+  color: #1db954;
+}
 
-    /* Style the audio title and artist */
-    #audio-title {
-      font-size: 10px;
-      font-weight: bold;
-      margin-bottom: px;
-    }
+/* Style the audio title and artist */
+#audio-title {
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: px;
+}
 
-    #audio-artist {
-      font-size: 8px;
-      color: #b3b3b3;
-    }
+#audio-artist {
+  font-size: 8px;
+  color: #b3b3b3;
+}
 
-    /* Style the audio progress bar */
-    #progress-bar {
-      width: 100%;
-      height: 3px;
-      background-color: #666;
-      margin-top: 5px;
-    }
+/* Style the audio progress bar */
+#progress-bar {
+  width: 100%;
+  height: 3px;
+  background-color: #666;
+  margin-top: 5px;
+}
 
-    /* Style the audio progress indicator */
-    #progress {
-      height: 100%;
-      background-color: #1DB954;
-    }
+/* Style the audio progress indicator */
+#progress {
+  height: 100%;
+  background-color: #1db954;
+}
