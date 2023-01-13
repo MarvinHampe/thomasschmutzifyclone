@@ -51,7 +51,7 @@ let mainContainer = document.getElementById('main-container');
 
 window.onload = () => {
 
-	playlists.map(async (playlist) => {
+	playlists.forEach(async (playlist) => {
 		const data = await getData(`playlist/${playlist.number}`);
 		console.log(data);
 
@@ -60,7 +60,7 @@ window.onload = () => {
 		<div class="item">
 		  <img src="${data.picture_big}" />
 		  <div class="play">
-			<span class="fa fa-play"></span>
+			<span class="fa fa-play" id='${data.id}'></span>
 		  </div>
 		  <h4>${data.title}</h4>
 		  <p>${data.description}</p>
@@ -68,85 +68,81 @@ window.onload = () => {
 
 		//Only the first item works
 
-		document.querySelector('.fa-play').addEventListener('click', () => {
-			console.log("hi");
+		document.querySelectorAll('.fa-play').forEach(list => {
+			return list.addEventListener('click', () => {
+				console.log("hi");
 
 
 
-			mainContainer.innerHTML = `
-			<div class="container">
-				<div class="header">
-
-					<div class="image_container">
-						<img src="${data.picture_big}" />
-					</div>
-
-					<div class="data_container">
-						<h1>${data.title}</h1>
-						<div class="small_details">
-							<h2 class="creator">${data.creator.name}</h2>
-							<p class="playlist_description">${data.description}</p>
+				mainContainer.innerHTML = `
+				<div class="container">
+					<div class="header">
+						<div class="image_container">
+							<img src="${data.picture_big}" />
 						</div>
-						<ul class="data">
-							<li>${data.type}</li>
-							<li>Duration: ${data.duration}</li>
-							<li>Fans: ${data.fans}</li>
-							<li>Number of songs: ${data.nb_tracks}</li>
-						</ul>
-						<div class="small_details">
-							<button>Listen</button>
-							<i>Heart Icon: ${data.is_loved_track}</i>
-							<i>Share icon</i>
+						<div class="data_container">
+							<h1>${data.title}</h1>
+							<div class="small_details">
+								<h2 class="creator">${data.creator.name}</h2>
+								<p class="playlist_description">${data.description}</p>
+							</div>
+							<ul class="data">
+								<li>${data.type}</li>
+								<li>Duration: ${data.duration}</li>
+								<li>Fans: ${data.fans}</li>
+								<li>Number of songs: ${data.nb_tracks}</li>
+							</ul>
+							<div class="small_details">
+								<button>Listen</button>
+								<i>Heart Icon: ${data.is_loved_track}</i>
+								<i>Share icon</i>
+							</div>
 						</div>
-					</div>
-
-					<div class="track-list">
-						<div class="first-line">
-							<span class="span-title">TITLE</span>
-							<span class="span-artist">ARTIST</span>
-							<span class="span-album">ALBUM</span>
-							<span class="span-date">DATE</span>
-							<span class="span-duration">DURATION ICON</span>
-						</div>
-					
-						<div class="track-container">
+						<div class="track-list">
+							<div class="first-line">
+								<span class="span-title">TITLE</span>
+								<span class="span-artist">ARTIST</span>
+								<span class="span-album">ALBUM</span>
+								<span class="span-date">DATE</span>
+								<span class="span-duration">DURATION ICON</span>
+							</div>
 						
-						 ${data.tracks.data.map(data => {
-
-							// FIND A WAY TO EDIT THE HTML WITH THE TRACK INFO
+							<div class="track-container">
 							
-							// document.querySelector('.track-container').innerHTML= `
-							
-							// <div class="track">
-							// 	<div class="track-image">
-							// 		<img src="${data.album.cover_big}" />
-							// 	</div>
-							// 	<div class="track-title">
-							// 		<span>${data.title}"<span>
-							// 	</div>
-							// 	<div class="track-artist">
-							// 		<span>${data.artist.name}"<span>
-							// 	</div>
-							// 	<div class="track-album">
-							// 		<span>${data.album.title}"<span>
-							// 	</div>
-							// </div>
-							
-							// `
-							 return data.title;
-						 })}
-
+							 ${data.tracks.data.map(data => {
+								// FIND A WAY TO EDIT THE HTML WITH THE TRACK INFO
+								
+								// document.querySelector('.track-container').innerHTML= `
+								
+								// <div class="track">
+								// 	<div class="track-image">
+								// 		<img src="${data.album.cover_big}" />
+								// 	</div>
+								// 	<div class="track-title">
+								// 		<span>${data.title}"<span>
+								// 	</div>
+								// 	<div class="track-artist">
+								// 		<span>${data.artist.name}"<span>
+								// 	</div>
+								// 	<div class="track-album">
+								// 		<span>${data.album.title}"<span>
+								// 	</div>
+								// </div>
+								
+								// `
+								 return data.title;
+							 })}
+							</div>
+						
+						
+						
+						
+						
 						</div>
-					
-					
-					
-					
-					
 					</div>
-
 				</div>
-			</div>
-			`
+				`
+			})
 		})
 
 	})
