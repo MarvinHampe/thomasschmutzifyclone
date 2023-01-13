@@ -150,19 +150,18 @@ body {
 }
 .spotify-playlists {
   padding: 20px 20px;
-  display: flex;
+display: flex;
 }
-.spotify-playlists h2 {
-  color: #ffffff;
+
+h2 {color: #ffffff;
   font-size: 16px;
-  margin-bottom: 20px;
+margin-left: 10px;
+margin-top: 20px;
 }
+
 .spotify-playlists .list {
   display: flex;
-  gap: 20px;
   overflow: hidden;
-  gap:10px;
-  
 }
 .spotify-playlists .list .item {
   min-width: 100px;
@@ -216,7 +215,7 @@ body {
   margin: 100px 0px 0px;
   border-color: #636363;
 }
-
+/*
 .preview {
   position: fixed;
   bottom: 0;
@@ -249,7 +248,7 @@ body {
   border-radius: 40px;
   cursor: pointer;
 }
-
+*/
 /*searchbox*/
 .search-box {
   position: absolute;
@@ -279,7 +278,7 @@ body {
 }
 /* icon */
 .search-btn {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   float: right;
   width: 10px;
   height: 10px;
