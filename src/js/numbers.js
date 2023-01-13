@@ -83,30 +83,30 @@ export let playlists = [{
         number: 5337198442
     },
 
-    {
-        name: "chill lofi",
-        number: 3338949242
-    },
+    // {
+    //     name: "chill lofi",
+    //     number: 3338949242
+    // },
 
-    {
-        name: "Indie Party",
-        number: 2558779444
-    },
+    // {
+    //     name: "Indie Party",
+    //     number: 2558779444
+    // },
 
-    {
-        name: "Weihnachten Hits",
-        number: 1055602641
-    },
+    // {
+    //     name: "Weihnachten Hits",
+    //     number: 1055602641
+    // },
 
-    {
-        name: "Deutschrap Banger",
-        number: 146820791
-    },
+    // {
+    //     name: "Deutschrap Banger",
+    //     number: 146820791
+    // },
 
-    {
-        name: "90's Rap",
-        number: 1724212365
-    },
+    // {
+    //     name: "90's Rap",
+    //     number: 1724212365
+    // },
 ]
 
 
