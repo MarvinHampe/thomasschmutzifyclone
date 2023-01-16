@@ -162,8 +162,9 @@ h2 {
 
 .spotify-playlists .list {
   display: flex;
-  overflow: hidden;
+margin-right: 10px;
 }
+
 .spotify-playlists .list .item {
   min-width: 100px;
   width: 100px;
@@ -184,6 +185,7 @@ h2 {
 .spotify-playlists .list .item .play {
   position: relative;
 }
+
 .spotify-playlists .list .item .play .fa {
   position: absolute;
   right: 25px;
@@ -361,7 +363,7 @@ h2 {
     padding: 0 6px;
 }
 .search-box:hover > .search-input {
-    width: 200px;
+    width: 100px;
     padding: 0 6px;
 }
 .search-box:hover > .search-btn,
