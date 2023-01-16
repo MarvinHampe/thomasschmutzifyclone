@@ -138,6 +138,7 @@ const load = async (endpoint, limit) => {
 						tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
 
 					});
+					break;
 					
 
 			}
