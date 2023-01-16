@@ -28,7 +28,7 @@ const getData = async (endpoint) => {
 	let response = await fetch(url + endpoint, options);
 	// console.log(response);
 	let data = await response.json();
-	console.log(data);
+	// console.log(data);
 	return data;
 };
 
@@ -40,51 +40,69 @@ const randomizer = (limit) => Math.floor(Math.random()*limit);
 
 const load = async (endpoint,limit) =>{
 
+	let arrayData = [];
+	
 	for(let i = 0; i < 5; i++) {
 
 	let data = await getData(endpoint+randomizer(limit));
 	console.log(endpoint);
-		
-		if(endpoint == "playlist/")
+	arrayData.push(data);
+	console.log(arrayData);}
+
+	arrayData.map(data =>{
+
+
+		if(data.type == "playlist")
 				{startPlaylist.innerHTML += `
 					<div class="list">
 					<div class="item">
-	  				<img src="${data.picture_big}" />
-	  				<div class="play">
+					  <img src="${data.picture_big}" />
+					  <div class="play">
 					<span class="fa fa-play" id='${data.id}'></span>
-	  				</div>
-	  				<h4>${data.title}</h4>
-	  				<p>${data.description}</p>
+					  </div>
+					  <h4>${data.title}</h4>
+					  <p>${data.description}</p>
 					</div>`;}
-		else if(endpoint == "artist/"){
+					else if(data.type == "artist"){
+					
+						startArtist.innerHTML += `
+					<div class="list">
+					<div class="item">
+					  <img src="${data.picture_big}" />
+					  <div class="play">
+						<span class="fa fa-play" id='${data.id}'></span>
+					  </div>
+					  <h4>${data.name}</h4>
+					  <p>${data.type}</p>
+					</div>`;
+					
+					}
+					else if(data.type == "album"){
+						startPodcast.innerHTML += `
+					<div class="list">
+					<div class="item">
+					  <img src="${data.cover_big}" />
+					  <div class="play">
+						<span class="fa fa-play" id='${data.id}'></span>
+					  </div>
+					  <h4>${data.title}</h4>
+					  <p>${data.artist.name}</p>
+					  
+					</div>`;}
 
-			startArtist.innerHTML += `
-		<div class="list">
-		<div class="item">
-		  <img src="${data.picture_big}" />
-		  <div class="play">
-			<span class="fa fa-play"></span>
-		  </div>
-		  <h4>${data.name}</h4>
-		  <p>${data.type}</p>
-		</div>`;
+					//eventlistener Playbutton
+					document.getElementById(data.id).addEventListener('click', () => {
+							console.log("hi");
+					
+							mainContainer.innerHTML = `<img src="${data.picture_big}"/>`;
+					})})
+	}
 
-		}
-		else if(endpoint == "album/"){
-			startPodcast.innerHTML += `
-		<div class="list">
-		<div class="item">
-		  <img src="${data.cover_big}" />
-		  <div class="play">
-			<span class="fa fa-play"></span>
-		  </div>
-		  <h4>${data.title}</h4>
-		  <p>{data.artist.name} ---> wird nicht übernommen</p>
-		  
-		</div>`;}
 
-}}
+		
 
+	
+		
 
 // DOM connection
 
@@ -102,82 +120,14 @@ window.onload = () => {
 	
 		load("playlist/",1000);
 		load("artist/",99999);
-		load("album/",99999);}
+		load("album/",99999);
+	}
 
 
-		// document.querySelectorAll('.fa-play').forEach(list => {
-		// 	return list.addEventListener('click', () => {
-		// 		console.log("hi");
+		
 
 
 
-		// 		mainContainer.innerHTML = `
-		// 		<div class="container">
-		// 			<div class="header">
-		// 				<div class="image_container">
-		// 					<img src="${data.picture_big}" />
-		// 				</div>
-		// 				<div class="data_container">
-		// 					<h1>${data.title}</h1>
-		// 					<div class="small_details">
-		// 						<h2 class="creator">${data.creator.name}</h2>
-		// 						<p class="playlist_description">${data.description}</p>
-		// 					</div>
-		// 					<ul class="data">
-		// 						<li>${data.type}</li>
-		// 						<li>Duration: ${data.duration}</li>
-		// 						<li>Fans: ${data.fans}</li>
-		// 						<li>Number of songs: ${data.nb_tracks}</li>
-		// 					</ul>
-		// 					<div class="small_details">
-		// 						<button>Listen</button>
-		// 						<i>Heart Icon: ${data.is_loved_track}</i>
-		// 						<i>Share icon</i>
-		// 					</div>
-		// 				</div>
-		// 				<div class="track-list">
-		// 					<div class="first-line">
-		// 						<span class="span-title">TITLE</span>
-		// 						<span class="span-artist">ARTIST</span>
-		// 						<span class="span-album">ALBUM</span>
-		// 						<span class="span-date">DATE</span>
-		// 						<span class="span-duration">DURATION ICON</span>
-		// 					</div>
-						
-		// 					<div class="track-container">
-							
-		// 					 ${data.tracks.data.map(data => {
-		// 						FIND A WAY TO EDIT THE HTML WITH THE TRACK INFO
-								
-		// 						document.querySelector('.track-container').innerHTML= `
-								
-		// 						<div class="track">
-		// 							<div class="track-image">
-		// 								<img src="${data.album.cover_big}" />
-		// 							</div>
-		// 							<div class="track-title">
-		// 								<span>${data.title}"<span>
-		// 							</div>
-		// 							<div class="track-artist">
-		// 								<span>${data.artist.name}"<span>
-		// 							</div>
-		// 							<div class="track-album">
-		// 								<span>${data.album.title}"<span>
-		// 							</div>
-		// 						</div>
-								
-		// 						`
-		// 						 return data.title;
-		// 					 })}
-		// 					</div>
-						
-						
-						
-						
-						
-		// 				</div>
-		// 			</div>
-		// 		</div>
-		// 		`
+		// 		
 		// 	})
 		// })
