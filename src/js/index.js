@@ -98,8 +98,6 @@ const load = async (endpoint, limit) => {
 			let filteredData = arrayData.filter(data => e.target.id == data.id ? true : false)
 
 
-
-			console.log(filteredData);
 		})
 	});
 
@@ -132,7 +130,29 @@ window.onload = () => {
 // Function for the main container
 
 const mainConstruct = (title, image, trackTitle, duration, artist) => {
-	console.log(title, image, trackTitle, duration, artist);
+	mainContainer.innerHTML =`
+	<div id="cover"><img src="${image}" class="profile-image" alt="Cover" /></div>
+	<div id="info">
+	<h2>${title}</h2>
+	</div>
+	<div id="tracklist"></div>`
+}
+const tracklist = ( image, trackTitle, duration, artist) =>{
+	let container = document.getElementById('tracklist');
+	let time = duration /60;
+	container.innerHTML +=`
+	<div class="track-box">
+	<div id="cover">
+	<img src="${image}" class="profile-image" alt="Cover" />
+	</div>
+	<div id="info">
+	<h2>${artist}</h2>
+	<h3>${trackTitle}</h3>
+	<p>${time.toFixed(2)}</p>
+	</div>
+	</div>
+
+	`
 }
 
 
@@ -143,14 +163,15 @@ searchField.addEventListener('change', async () => {
 	const value = searchField.value.toLowerCase().trim().split(" ").join("");
 	const data = await getData(`search?q=${value}`);
 	searchField.value = '';
-	// console.log(data);
-	let fetchData = [];
-	fetchData.push(data)
-	console.log(fetchData);
+	let fetchedData = [];
+	fetchedData.push(data.data);
 
-	fetchData.forEach(result => {
-		result.map(data => {
-			mainConstruct(data.album.title, data.album.cover_big, data.title, data.duration, data.artist.name)
-		})
+	mainConstruct(fetchedData[0][1].album.title, fetchedData[0][1].album.cover_big)
+
+	fetchedData[0].map(song =>{
+		tracklist( song.artist.picture_small, song.title, song.duration, song.artist.name)
 	})
+	
+
+	
 });
