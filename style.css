@@ -1,11 +1,13 @@
 * {
   padding: 0;
   margin: 0;
+
 }
 
 body {
   background-color: #121212;
   font-family: "Montserrat", sans-serif;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -58,7 +60,7 @@ body {
 }
 .sidebar .policies {
   position: absolute;
-  bottom: 30px;
+  bottom: 70px;
 }
 .sidebar .policies ul {
   list-style: none;
@@ -162,7 +164,7 @@ h2 {
 
 .spotify-playlists .list {
   display: flex;
-margin-right: 10px;
+  margin-right: 10px;
 }
 
 .spotify-playlists .list .item {
@@ -313,70 +315,68 @@ margin-right: 10px;
   background-color: #1db954;
 } */
 
-
 .parent-container {
-    position: relative; /* added */
+  position: relative; /* added */
 }
 .search-box {
-    position: absolute;
-    top: 20px;
-    left: -10%;
-    transform: translate(0%, 50%);
-    background: #1db954;
-    height: 20px;
-    border-radius: 50px;
-    padding: 5px;
+  position: absolute;
+  top: 20px;
+  left: -10%;
+  transform: translate(0%, 50%);
+  background: #1db954;
+  height: 20px;
+  border-radius: 50px;
+  padding: 5px;
 }
 /* input */
 .search-input {
-    outline: none;
-    border: none;
-    background: none;
-    width: 0;
-    padding: 0;
-    color: #fff;
-    float: left;
-    font-size: 10px;
-    transition: 0.3s;
-    line-height: 20px;
+  outline: none;
+  border: none;
+  background: none;
+  width: 0;
+  padding: 0;
+  color: #fff;
+  float: left;
+  font-size: 10px;
+  transition: 0.3s;
+  line-height: 20px;
 }
 .search-input::placeholder {
-    color: #ffffff;
+  color: #ffffff;
 }
 /* icon */
 .search-btn {
-    color: #fff;
-    float: right;
-    width: 20px;
-    height: 20px;
-    border-radius: 50px;
-    background: #1db954;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: 0.3s;
+  color: #fff;
+  float: right;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  background: #1db954;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: 0.3s;
 }
 .search-input:focus,
 .search-input:not(:placeholder-shown) {
-    width: 200px;
-    padding: 0 6px;
+  width: 100px;
+  padding: 0 6px;
 }
 .search-box:hover > .search-input {
-    width: 100px;
-    padding: 0 6px;
+  width: 100px;
+  padding: 0 6px;
 }
 .search-box:hover > .search-btn,
 .search-input:focus + .search-btn,
 .search-input:not(:placeholder-shown) + .search-btn {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .fa-search {
-    font-size: 10px;
-    background-color: #1db954;
+  font-size: 10px;
+  background-color: #1db954;
 }
-
 
 /*Audio Player*/
 /* Position the audio player at the bottom of the page */
@@ -386,10 +386,9 @@ margin-right: 10px;
   width: 100%;
   background-color: #282828;
   padding: 5px;
-  padding-left: 10px;
+  padding-left: 20%;
   color: white;
   font-family: "Open Sans", sans-serif;
-  margin-left: 140px;
 }
 
 /* Style the album cover */
@@ -397,7 +396,7 @@ margin-right: 10px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 25%;
 }
 
 /* Style the audio controls */
@@ -422,7 +421,6 @@ margin-right: 10px;
 #audio-title {
   font-size: 10px;
   font-weight: bold;
-  margin-bottom: px;
 }
 
 #audio-artist {
@@ -432,7 +430,7 @@ margin-right: 10px;
 
 /* Style the audio progress bar */
 #progress-bar {
-  width: 100%;
+  width: 60%;
   height: 3px;
   background-color: #666;
   margin-top: 5px;
@@ -442,4 +440,28 @@ margin-right: 10px;
 #progress {
   height: 100%;
   background-color: #1db954;
+}
+
+.schmutzify:hover {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    min-width: 300px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
 }
