@@ -34,26 +34,27 @@ const getData = async (endpoint) => {
 
 // Randomizer
 
-const randomizer = (limit) => Math.floor(Math.random()*limit);
+const randomizer = (limit) => Math.floor(Math.random() * limit);
 
 // OnLoad function
 
-const load = async (endpoint,limit) =>{
+const load = async (endpoint, limit) => {
 
 	let arrayData = [];
-	
-	for(let i = 0; i < 5; i++) {
 
-	let data = await getData(endpoint+randomizer(limit));
-	console.log(endpoint);
-	arrayData.push(data);
-	console.log(arrayData);}
+	for (let i = 0; i < 5; i++) {
 
-	arrayData.map(data =>{
+		let data = await getData(endpoint + randomizer(limit));
+		console.log(endpoint);
+		arrayData.push(data);
+		console.log(arrayData);
+	}
+
+	arrayData.map(data => {
 
 
-		if(data.type == "playlist")
-				{startPlaylist.innerHTML += `
+		if (data.type == "playlist") {
+			startPlaylist.innerHTML += `
 					<div class="list">
 					<div class="item">
 					  <img src="${data.picture_big}" />
@@ -62,10 +63,10 @@ const load = async (endpoint,limit) =>{
 					  </div>
 					  <h4>${data.title}</h4>
 					  <p>${data.description}</p>
-					</div>`;}
-					else if(data.type == "artist"){
-					
-						startArtist.innerHTML += `
+					</div>`;
+		} else if (data.type == "artist") {
+
+			startArtist.innerHTML += `
 					<div class="list">
 					<div class="item">
 					  <img src="${data.picture_big}" />
@@ -75,10 +76,9 @@ const load = async (endpoint,limit) =>{
 					  <h4>${data.name}</h4>
 					  <p>${data.type}</p>
 					</div>`;
-					
-					}
-					else if(data.type == "album"){
-						startPodcast.innerHTML += `
+
+		} else if (data.type == "album") {
+			startPodcast.innerHTML += `
 					<div class="list">
 					<div class="item">
 					  <img src="${data.cover_big}" />
@@ -88,30 +88,26 @@ const load = async (endpoint,limit) =>{
 					  <h4>${data.title}</h4>
 					  <p>${data.artist.name}</p>
 					  
-					</div>`;}
+					</div>`;
+		}
 
-				})
-				document.querySelectorAll('.fa-play').forEach(play =>{
-					play.addEventListener('click', (e) => {
-						
-					let filteredData =	arrayData.filter( data => e.target.id == data.id? true : false)
+	})
+	document.querySelectorAll('.fa-play').forEach(play => {
+		play.addEventListener('click', (e) => {
 
-
-
-						console.log(filteredData);
-					} )
-				}
-					);
+			let filteredData = arrayData.filter(data => e.target.id == data.id ? true : false)
 
 
 
-	}
+			console.log(filteredData);
+		})
+	});
 
 
-		
 
-	
-		
+}
+
+
 
 // DOM connection
 
@@ -126,18 +122,35 @@ let mainContainer = document.getElementById('main-container');
 
 window.onload = () => {
 
-	
-		load("playlist/",1000);
-		load("artist/",99999);
-		load("album/",99999);
 
-	}
+	load("playlist/", 1000);
+	load("artist/", 99999);
+	load("album/", 99999);
+
+}
+
+// Function for the main container
+
+const mainConstruct = (title, image, trackTitle, duration, artist) => {
+	console.log(title, image, trackTitle, duration, artist);
+}
 
 
-		
+// Search field 
+const searchField = document.querySelector('.search-input');
 
+searchField.addEventListener('change', async () => {
+	const value = searchField.value.toLowerCase().trim().split(" ").join("");
+	const data = await getData(`search?q=${value}`);
+	searchField.value = '';
+	// console.log(data);
+	let fetchData = [];
+	fetchData.push(data)
+	console.log(fetchData);
 
-
-		// 		
-		// 	})
-		// })
+	fetchData.forEach(result => {
+		result.map(data => {
+			mainConstruct(data.album.title, data.album.cover_big, data.title, data.duration, data.artist.name)
+		})
+	})
+});
