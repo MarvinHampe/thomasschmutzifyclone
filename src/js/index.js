@@ -90,12 +90,21 @@ const load = async (endpoint,limit) =>{
 					  
 					</div>`;}
 
-					//eventlistener Playbutton
-					document.getElementById(data.id).addEventListener('click', () => {
-							console.log("hi");
-					
-							mainContainer.innerHTML = `<img src="${data.picture_big}"/>`;
-					})})
+				})
+				document.querySelectorAll('.fa-play').forEach(play =>{
+					play.addEventListener('click', (e) => {
+						
+					let filteredData =	arrayData.filter( data => e.target.id == data.id? true : false)
+
+
+
+						console.log(filteredData);
+					} )
+				}
+					);
+
+
+
 	}
 
 
@@ -121,6 +130,7 @@ window.onload = () => {
 		load("playlist/",1000);
 		load("artist/",99999);
 		load("album/",99999);
+
 	}
 
 
