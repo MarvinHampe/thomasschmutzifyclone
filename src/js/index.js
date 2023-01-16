@@ -93,9 +93,64 @@ const load = async (endpoint, limit) => {
 
 	})
 	document.querySelectorAll('.fa-play').forEach(play => {
-		play.addEventListener('click', (e) => {
+		play.addEventListener('click', async (e) => {
 
-			let filteredData = arrayData.filter(data => e.target.id == data.id ? true : false)
+			let filteredData = arrayData.filter(data => e.target.id == data.id ? true : false);
+			const single = filteredData[0]
+			console.log(single);
+			
+			switch(true){
+				case single.type == "playlist":
+
+					mainContainer.innerHTML = `
+					<div id="cover"><img src="${single.picture_big}" class="profile-image" alt="Cover" /></div>
+					<div id="info">
+					<h2>${single.title}</h2>
+					</div>
+					<div id="tracklist"></div>`
+
+					single.tracks.data.map( track =>{
+
+						tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
+
+					});
+					break;
+				case single.type == "artist":
+					let data = await getData(`search?q=${single.name.split(" ").join("").toLowerCase().trim()}`);
+					let tracks = [];
+					tracks.push(data.data[0]);	
+					console.log(tracks);
+					
+					mainContainer.innerHTML = `
+					<div id="cover"><img src="${single.picture_big}" class="profile-image" alt="Cover" /></div>
+					<div id="info">
+					<h2>${single.name}</h2>
+					</div>
+					<div id="tracklist"></div>`
+					
+
+					tracks.map( track =>{
+
+					tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
+
+					});
+					break;
+				case single.type == "album":
+					mainContainer.innerHTML = `
+					<div id="cover"><img src="${single.cover_big}" class="profile-image" alt="Cover" /></div>
+					<div id="info">
+					<h2>${single.title}</h2>
+					</div>
+					<div id="tracklist"></div>`
+					
+					single.tracks.data.map( track =>{
+
+						tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
+
+					});
+					
+
+			}
 
 
 		})
@@ -129,7 +184,7 @@ window.onload = () => {
 
 // Function for the main container
 
-const mainConstruct = (title, image, trackTitle, duration, artist) => {
+const mainConstruct = (title, image) => {
 	mainContainer.innerHTML =`
 	<div id="cover"><img src="${image}" class="profile-image" alt="Cover" /></div>
 	<div id="info">
@@ -143,7 +198,7 @@ const tracklist = ( image, trackTitle, duration, artist) =>{
 	container.innerHTML +=`
 	<div class="track-box">
 	<div id="cover">
-	<img src="${image}" class="profile-image" alt="Cover" />
+	<img src="${image}" class="track-image" alt="Cover" />
 	</div>
 	<div id="info">
 	<h2>${artist}</h2>
