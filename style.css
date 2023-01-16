@@ -601,3 +601,9 @@ h2 {
   margin-top: 5px;
   float: right;
 }
+
+.single-title {
+  color: #ffffff;
+  margin-top: 4rem;
+  font-size: 2.5rem;
+}
