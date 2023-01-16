@@ -1,5 +1,7 @@
 // import * as bootstrap from '../../node_modules/bootstrap/js';
-import { api } from "./env.js";
+import {
+  api
+} from "./env.js";
 
 // OPTIONS for APIs
 const options = {
@@ -107,25 +109,28 @@ window.onload = () => {
 
 const mainConstruct = (title, image, trackTitle, duration, artist) => {
   mainContainer.innerHTML = `
-	<div id="cover"><img src="${image}" class="profile-image" alt="Cover" /></div>
+	<div class="info-container">
+  <div id="cover">
+    <img src="${image}" class="profile-image" alt="Cover" />
+  </div>
 	<div id="info">
-	<h2>${title}</h2>
+	  <h2 id="info-title">${title}</h2>
 	</div>
-	<div id="tracklist"></div>`;
+	<div id="tracklist"></div>
+  </div>`;
 };
-const tracklist = (image, trackTitle, duration, artist) => {
+const tracklist = (image, trackTitle, duration, artist, description) => {
   let container = document.getElementById("tracklist");
   let time = duration / 60;
   container.innerHTML += `
 	<div class="track-box">
-	<div id="cover">
-	<img src="${image}" class="track-image" alt="Cover" />
-	</div>
-	<div id="info">
-	<h2>${artist}</h2>
-	<h3>${trackTitle}</h3>
-	<p>${time.toFixed(2)}</p>
-	</div>
+	  <div id="track">
+	    <img src="${image}" class="track-image" alt="Cover" />
+	    <h2 id="artist-name">${artist}</h2>
+      <span class="track-title">${trackTitle}</span>
+      <div class="duration-end">
+      <span class="track-duration">${time.toFixed(2)}</span></div>
+      </div>
 	</div>
 
 	`;
@@ -151,7 +156,7 @@ searchField.addEventListener("change", async () => {
       song.artist.picture_small,
       song.title,
       song.duration,
-      song.artist.name
+      song.artist.name,
     );
   });
 });
