@@ -79,16 +79,78 @@ const load = async (endpoint, limit) => {
 					  <p>${data.artist.name}</p>
 					  
 					</div>`;
-    }
-  });
-  document.querySelectorAll(".fa-play").forEach((play) => {
-    play.addEventListener("click", (e) => {
-      let filteredData = arrayData.filter((data) =>
-        e.target.id == data.id ? true : false
-      );
-    });
-  });
-};
+		}
+
+	})
+	document.querySelectorAll('.fa-play').forEach(play => {
+		play.addEventListener('click', async (e) => {
+
+			let filteredData = arrayData.filter(data => e.target.id == data.id ? true : false);
+			const single = filteredData[0]
+			console.log(single);
+			
+			switch(true){
+				case single.type == "playlist":
+
+					mainContainer.innerHTML = `
+					<div id="cover"><img src="${single.picture_big}" class="profile-image" alt="Cover" /></div>
+					<div id="info">
+					<h2>${single.title}</h2>
+					</div>
+					<div id="tracklist"></div>`
+
+					single.tracks.data.map( track =>{
+
+						tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
+
+					});
+					break;
+				case single.type == "artist":
+					let data = await getData(`search?q=${single.name.split(" ").join("").toLowerCase().trim()}`);
+					let tracks = [];
+					tracks.push(data.data[0]);	
+					console.log(tracks);
+					
+					mainContainer.innerHTML = `
+					<div id="cover"><img src="${single.picture_big}" class="profile-image" alt="Cover" /></div>
+					<div id="info">
+					<h2>${single.name}</h2>
+					</div>
+					<div id="tracklist"></div>`
+					
+
+					tracks.map( track =>{
+
+					tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
+
+					});
+					break;
+				case single.type == "album":
+					mainContainer.innerHTML = `
+					<div id="cover"><img src="${single.cover_big}" class="profile-image" alt="Cover" /></div>
+					<div id="info">
+					<h2>${single.title}</h2>
+					</div>
+					<div id="tracklist"></div>`
+					
+					single.tracks.data.map( track =>{
+
+						tracklist( track.album.cover_small, track.title, track.duration, track.artist.name)
+
+					});
+					
+
+			}
+
+
+		})
+	});
+
+
+
+}
+
+
 
 // DOM connection
 
@@ -107,12 +169,9 @@ window.onload = () => {
 
 // Function for the main container
 
-const mainConstruct = (title, image, trackTitle, duration, artist) => {
-  mainContainer.innerHTML = `
-	<div class="info-container">
-  <div id="cover">
-    <img src="${image}" class="profile-image" alt="Cover" />
-  </div>
+const mainConstruct = (title, image) => {
+	mainContainer.innerHTML =`
+	<div id="cover"><img src="${image}" class="profile-image" alt="Cover" /></div>
 	<div id="info">
 	  <h2 id="info-title">${title}</h2>
 	</div>
@@ -124,13 +183,14 @@ const tracklist = (image, trackTitle, duration, artist, description) => {
   let time = duration / 60;
   container.innerHTML += `
 	<div class="track-box">
-	  <div id="track">
-	    <img src="${image}" class="track-image" alt="Cover" />
-	    <h2 id="artist-name">${artist}</h2>
-      <span class="track-title">${trackTitle}</span>
-      <div class="duration-end">
-      <span class="track-duration">${time.toFixed(2)}</span></div>
-      </div>
+	<div id="cover">
+	<img src="${image}" class="track-image" alt="Cover" />
+	</div>
+	<div id="info">
+	<h2>${artist}</h2>
+	<h3>${trackTitle}</h3>
+	<p>${time.toFixed(2)}</p>
+	</div>
 	</div>
 
 	`;
